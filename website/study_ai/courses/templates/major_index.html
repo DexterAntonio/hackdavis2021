@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1>Majors</h1>
+<div class="row">
+{% for major in majors %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">{{ major.name }}</h5>
+                <a href="{% url 'major_detail' major.pk %}">
+                class="btn btn-primary">
+
+                <p class="card-text">{{ major.webpage }}</p>
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

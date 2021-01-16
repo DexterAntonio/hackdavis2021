@@ -55,7 +55,7 @@ ROOT_URLCONF = 'study_ai.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["study_ai/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
