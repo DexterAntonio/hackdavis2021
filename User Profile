@@ -1,0 +1,24 @@
+class UserTranscript:
+    def __init__(self, __user, __classes, __grades, __preferencelist):
+        self.__user = __user
+        self.__classes = __classes
+        self.__grades = __grades
+        self.__preferencelist = __preferencelist
+    def update(courses, grades):
+        if (not isinstance(courses, list)) or (not isinstance(grades, list)):
+            return "Error code 1"
+        else:
+            self.__classes.extend(courses)
+            self.__grades.extend(grades)
+            return 1
+class User:
+    def __init__(self, __name, __transcript, __preferencelist):
+        self.__name = __name
+        self.__transcript = __transcript
+        self.__preferencelist = __preferencelist
+    def incqtr(courses_grades, courses_preferences):
+        if (not isinstance(courses_grades, list)) or (not isinstance(courses_preferences, list)):
+            return "Error code 1"
+        else:
+            self.__transcript.update(courses_grades, courses_preferences)
+            return 1
