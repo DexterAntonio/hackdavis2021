@@ -31,7 +31,7 @@ def enter_data_form(request):
             new_major = Major(name=new_major, webpage=major_website)
             new_major.save()
             all_achievements = Achievment.objects.all()
-
+            
             for req in requirements:
                 if not req in all_achievements: 
                     new_ach = Achievment(name='placeholder',
@@ -40,6 +40,7 @@ def enter_data_form(request):
                     ach = new_ach
                 else:
                     ach = Achievment.objects.filter(requirements=req)[0]
+                    print(req)
 
                 new_major.requirements.add(ach)
                          

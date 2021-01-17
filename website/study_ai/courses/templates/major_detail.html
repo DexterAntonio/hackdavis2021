@@ -7,10 +7,8 @@
     <div class="col-md-4">
         <h5>Requirements</h5>
         {%for achievement in major.requirements.all%}
-            <p> {{achievement.name}} </p>
-            {% for req in achievement.requirements.all%}
-                <p>{{req.name}}</p>
-                {% endfor %}
+            <p> <b>Achievement Name:</b> {{achievement.name}} </p>
+            <p>Achievement Boolean : {{achievement.requirements}}</p>
             {% endfor %}
         <br>
     </div>

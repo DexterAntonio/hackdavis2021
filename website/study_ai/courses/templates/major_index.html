@@ -8,10 +8,9 @@
         <div class="card mb-2">
             <div class="card-body">
                 <h5 class="card-title">{{ major.name }}</h5>
-                <a href="{% url 'major_detail' major.pk %}">
+                <a href="{% url 'major_detail' major.pk %}"
                 class="btn btn-primary">
-                <p class="card-text">{{ major.webpage }}</p>
-                    Read More
+                <p class="card-text">Major Details</p>
                 </a>
             </div>
         </div>
