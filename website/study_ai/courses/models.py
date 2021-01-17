@@ -10,9 +10,9 @@ class Course(models.Model):
     course_number = models.CharField(max_length=10) 
     # course_ids TODO: Add this at some point 
     prereqs = models.ManyToManyField("self")
+    description = models.TextField()
     def __str__(self):
         return str(self.course_number)
-
 
 class Achievment(models.Model):
     id = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
@@ -29,3 +29,14 @@ class Major(models.Model):
     requirements = models.ManyToManyField(Achievment)
     def __str__(self):
         return str(self.name)
+
+class User(models.Model):
+    id = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
+    current_courses = models.ManyToManyField(Course, related_name='current_courses') 
+    past_courses = models.ManyToManyField(Course, related_name='past_courses') 
+    grades = models.CharField(max_length=2) # better way 
+
+class Group(models.Model):
+    id = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
+    group_members = models.ManyToManyField(User) 
+
