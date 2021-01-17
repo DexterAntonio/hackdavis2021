@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from courses.models import Course, Major, Achievment
 from .major_add_form import CommentForm
-
+import re 
 
 def major_detail(request, pk):
     major = Major.objects.get(pk=pk)
@@ -27,20 +27,20 @@ def enter_data_form(request):
             new_major = form.cleaned_data["major_title"]
             major_website = form.cleaned_data["major_website"]
             body = form.cleaned_data["body"]
-            requirements = body.split(',')
+            requirements = re.findall('\((.*?)\)', body)
             new_major = Major(name=new_major, webpage=major_website)
             new_major.save()
             all_achievements = Achievment.objects.all()
             
             for req in requirements:
                 if not req in all_achievements: 
-                    new_ach = Achievment(name='placeholder',
+                    print(req)
+                    new_ach = Achievment(name=req,
                                          requirements=req)
                     new_ach.save()
                     ach = new_ach
                 else:
                     ach = Achievment.objects.filter(requirements=req)[0]
-                    print(req)
 
                 new_major.requirements.add(ach)
                          
