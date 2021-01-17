@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<h1>{{ major.name }}</h1>
+<div class="row">
+    <div class="col-md-4">
+        <h5>Enter in Form Here</h5>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.major_title }}
+            </div>
+            <div class="form-group">
+                {{ form.major_website }}
+            </div>
+            <div class="form-group">
+                {{ form.body }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
