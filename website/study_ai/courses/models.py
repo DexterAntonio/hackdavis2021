@@ -10,15 +10,22 @@ class Course(models.Model):
     course_number = models.CharField(max_length=10) 
     # course_ids TODO: Add this at some point 
     prereqs = models.ManyToManyField("self")
+    def __str__(self):
+        return str(self.course_number)
+
 
 class Achievment(models.Model):
     id = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     name = models.CharField(max_length=100)
     requirements = models.CharField(max_length=500)
     requirements_json_path = models.CharField(max_length=100)
+    def __str__(self):
+        return str(self.name)
 
 class Major(models.Model):
     id = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     name = models.CharField(max_length=200)
     webpage = models.CharField(max_length=200)
     requirements = models.ManyToManyField(Achievment)
+    def __str__(self):
+        return str(self.name)
